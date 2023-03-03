@@ -2,6 +2,7 @@ import platforms.esportsbet as EB
 import platforms.cloudbet as CB
 import platforms.thunderpick as TP
 import platforms.luckbox as LB
+import configs
 
 data = [CB.getGames(), 
         EB.getGames(), 
@@ -28,10 +29,24 @@ def runArb(i, j):
                 if oddsA != None and oddsB != None:
                     arb = (1/oddsA + 1/oddsB)*100
                     if arb < 100:
-                        print("Team1: " + home + " " + str(oddsA) + " / " + i["platform"] )
-                        print("Team2: " + away + " " + str(oddsB) + " / " + j["platform"])
+                        sap = calculateStakesAndProfit(oddsA, oddsB)
+                        print("Team1: " + home + " " + str(oddsA) + " / " + i["platform"] + " / STAKE: " + str(sap["stake_a"]))
+                        print("Team2: " + away + " " + str(oddsB) + " / " + j["platform"] + " / STAKE: " + str(sap["stake_b"]))
+                        print("Total Profit: " + str(sap["roi"]))
                         print(str(arb) + "%")
                         print("----------------------------------------------------------")
 
-def getArb(stake):
+def calculateStakesAndProfit(a, b):
+    total = a + b
+    stk = configs.STAKE
+    arb = (1/a + 1/b)*100
+    roi = 100 - arb
+    object = {
+        "stake_a": b * stk / total,
+        "stake_b": a * stk / total,
+        "roi": roi
+    }
+    return object
+
+def getArb():
     loopArray(data)
