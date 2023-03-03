@@ -39,7 +39,7 @@ def runArb(i, j):
                 oddsB = n["team2"]["odds"]
                 if oddsA != None and oddsB != None:
                     arb = (1/oddsA + 1/oddsB)*100
-                    if arb < 100:
+                    if arb < configs.MINARB:
                         sap = calculateStakesAndProfit(oddsA, oddsB)
                         L = ["Team1: " + home + " " + str(oddsA) + " / " + i["platform"] + " / STAKE: " + str(sap["stake_a"]) + "\n",
                              "Team2: " + away + " " + str(oddsB) + " / " + j["platform"] + " / STAKE: " + str(sap["stake_b"]) + "\n",
