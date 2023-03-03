@@ -14,10 +14,17 @@ def getGames():
 
 def fetchGames():
     url = "https://api.luckbox.com/v1/match?limit=100&page=1&games[]=league-of-legends"
-    headers = {"Cookie": configs.LUCKBOX_COOKIE_TOKEN}
+    headers = {"Cookie": "luckbox-auth-token=" + getAuthToken()}
     x = requests.get(url, headers=headers)
     data = x.text
     return sortGames(data)
+
+def getAuthToken():
+    url = "https://api.luckbox.com/v1/issueToken"
+    x = requests.post(url)
+    data = json.loads(x.text)
+    token = data["data"]["authenticationToken"]
+    return token
 
 def sortGames(data):
     data = json.loads(data)
