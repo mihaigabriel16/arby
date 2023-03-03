@@ -2,12 +2,14 @@ import platforms.esportsbet as EB
 import platforms.cloudbet as CB
 import platforms.thunderpick as TP
 import platforms.luckbox as LB
+import platforms.rivalry as RV
 import configs
 
 data = [CB.getGames(), 
         EB.getGames(), 
         TP.getGames(),
-        LB.getGames()]
+        LB.getGames(),
+        RV.getGames()]
 
 
 def loopArray(arr):
