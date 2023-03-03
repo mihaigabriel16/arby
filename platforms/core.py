@@ -4,6 +4,10 @@ import platforms.thunderpick as TP
 import platforms.luckbox as LB
 import platforms.rivalry as RV
 import configs
+import requests
+from pathlib import Path
+from datetime import datetime
+
 
 data = [CB.getGames(), 
         EB.getGames(), 
@@ -17,6 +21,7 @@ def loopArray(arr):
         for j in arr:
             if i["platform"] != j["platform"]:
                 runArb(i, j)
+
 
 def runArb(i, j):
     a = i["data"]
@@ -32,11 +37,25 @@ def runArb(i, j):
                     arb = (1/oddsA + 1/oddsB)*100
                     if arb < 100:
                         sap = calculateStakesAndProfit(oddsA, oddsB)
-                        print("Team1: " + home + " " + str(oddsA) + " / " + i["platform"] + " / STAKE: " + str(sap["stake_a"]))
-                        print("Team2: " + away + " " + str(oddsB) + " / " + j["platform"] + " / STAKE: " + str(sap["stake_b"]))
-                        print("Total Profit: " + str(sap["roi"]))
-                        print(str(arb) + "%")
-                        print("----------------------------------------------------------")
+                        L = ["Team1: " + home + " " + str(oddsA) + " / " + i["platform"] + " / STAKE: " + str(sap["stake_a"]) + "\n",
+                             "Team2: " + away + " " + str(oddsB) + " / " + j["platform"] + " / STAKE: " + str(sap["stake_b"]) + "\n",
+                             "Total Profit: " + str(sap["roi"]) + "\n",
+                             str(arb) + "%"  + "\n",
+                             "---------------------------------------------------------- \n"]
+                        for line in L:
+                            configs.TXTARRAY.append(line)
+                            print(line)
+
+def printData(text_data):
+    path = "runs/" + str(configs.TXTNAME) + ".txt"
+    f = open(path, "w")
+    f.writelines(text_data)
+    f.close()
+
+def getDateTime():
+    now = datetime.now()
+    txtname = now.strftime("%d-%m-%Y %H-%M-%S")
+    return txtname
 
 def calculateStakesAndProfit(a, b):
     total = a + b
@@ -51,4 +70,16 @@ def calculateStakesAndProfit(a, b):
     return object
 
 def getArb():
+    configs.TXTNAME = getDateTime()
     loopArray(data)
+    printData(configs.TXTARRAY)
+    sendDiscordNotif()
+
+def sendDiscordNotif():
+    url = "https://discord.com/api/webhooks/1081285206511730729/PwE9P1dVZpH9oQsFoV3iRRX__GnvaiWfUiv3Sux63yP2PQdXiaMpPp19te8sl1ldeVSz"
+    body = {
+        "embeds": [{
+            "description": str(configs.TXTARRAY)
+            }]
+        }
+    requests.post(url, json=body)
