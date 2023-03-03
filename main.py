@@ -1,6 +1,4 @@
 import requests 
-import platforms.esportsbet as EB
-import platforms.cloudbet as CB
+import platforms.core as core
 
-data = CB.getCompetitions()
-
+core.getArb()

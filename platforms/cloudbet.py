@@ -5,7 +5,12 @@ data_array = []
 
 
 def getGames():
-    return 0
+    getCompetitions()
+    object = {
+        "platform": "CLOUDBET",
+        "data": data_array
+    }
+    return object
 
 def getCompetitions():
     events_data = json.loads(getEvents())
@@ -15,7 +20,6 @@ def getCompetitions():
         data = x.text
         for event in json.loads(data)["events"]:
             addDataToArray(event)
-    print(data_array)
         
     
 def getEvents():
@@ -45,6 +49,6 @@ def addDataToArray(data):
             else:
                 object["team2"]["odds"] = item["price"]
         data_array.append(object)
-    except KeyError:
+    except (KeyError, TypeError) as error:
         pass
 
