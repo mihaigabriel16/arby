@@ -40,7 +40,7 @@ def runArb(i, j):
                         L = ["Team1: " + home + " " + str(oddsA) + " / " + i["platform"] + " / STAKE: " + str(sap["stake_a"]) + "\n",
                              "Team2: " + away + " " + str(oddsB) + " / " + j["platform"] + " / STAKE: " + str(sap["stake_b"]) + "\n",
                              "Total Profit: " + str(sap["roi"]) + "\n",
-                             str(arb) + "%"  + "\n",
+                             str(formatDec(arb)) + "%"  + "\n",
                              "---------------------------------------------------------- \n"]
                         for line in L:
                             configs.TXTARRAY.append(line)
@@ -56,18 +56,21 @@ def getDateTime():
     now = datetime.now()
     txtname = now.strftime("%d-%m-%Y %H-%M-%S")
     return txtname
-
+def formatDec(x):
+    return ('%.2f' % x).rstrip('0').rstrip('.')
 def calculateStakesAndProfit(a, b):
     total = a + b
     stk = configs.STAKE
     arb = (1/a + 1/b)*100
     roi = 100 - arb
     object = {
-        "stake_a": b * stk / total,
-        "stake_b": a * stk / total,
-        "roi": roi
+        "stake_a": formatDec(b * stk / total),
+        "stake_b": formatDec(a * stk / total),
+        "roi": formatDec(roi)
     }
     return object
+
+
 
 def getArb():
     configs.TXTNAME = getDateTime()
@@ -79,7 +82,13 @@ def sendDiscordNotif():
     url = "https://discord.com/api/webhooks/1081285206511730729/PwE9P1dVZpH9oQsFoV3iRRX__GnvaiWfUiv3Sux63yP2PQdXiaMpPp19te8sl1ldeVSz"
     body = {
         "embeds": [{
-            "description": str(configs.TXTARRAY)
+            "description": formatText(configs.TXTARRAY)
             }]
         }
     requests.post(url, json=body)
+
+def formatText(data):
+    text = ""
+    for line in data:
+        text += line
+    return text
