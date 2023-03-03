@@ -24,7 +24,7 @@ def fetchTranslations():
 
 def filterGames(data):
     data = json.loads(data)
-    for item in data["items"]:
+    for item in data["data"]["items"]:
         object = {
             "key": None,
             "team1": {
@@ -38,11 +38,31 @@ def filterGames(data):
         }
         id = item["id"]
         leagueId = item["leagueId"]
+        engslug = item["translationSlug"]
+        teamNames = getTeamNames(leagueId, id, engslug)
+        object["key"] = teamNames["key"]
+        object["team1"]["name"] = teamNames["team1"]
+        object["team2"]["name"] = teamNames["team2"]
+        for odd in data["data"]["relations"]["odds"]:
+            if odd == id:
+                for od in odd:
+                    if od["id"] == 910:
+                        object["team1"]["odds"] = od["outcomes"][0]["odds"]
+                        object["team2"]["odds"] = od["outcomes"][1]["odds"]
+        data_array.append(object)
 
 def getTeamNames(leagueId, gameId, engslug):
-    url = "https://tonybet.com/en/api/seo/get-data?pageUrl=/en/prematch/league-of-legends/"+leagueId+"/"+gameId+"-"+engslug
+    url = "https://tonybet.com/en/api/seo/get-data?pageUrl=/en/prematch/league-of-legends/"+str(leagueId)+"/"+str(gameId)+"-"+engslug
     x = requests.get(url)
+    data = json.loads(x.text)
     object = {
+        "key": None,
         "team1": None,
         "team2": None
     }
+    item = data["data"]["structuredData"]
+    teams = item[4]
+    object["key"] = teams["organizer"]["name"]
+    object["team1"] = teams["homeTeam"]["name"]
+    object["team2"] = teams["awayTeam"]["name"]
+    return object
