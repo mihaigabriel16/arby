@@ -3,6 +3,7 @@ import platforms.cloudbet as CB
 import platforms.thunderpick as TP
 import platforms.luckbox as LB
 import platforms.rivalry as RV
+import platforms.lootbet as LB
 import configs
 import requests
 from pathlib import Path
@@ -13,7 +14,8 @@ data = [CB.getGames(),
         EB.getGames(), 
         TP.getGames(),
         LB.getGames(),
-        RV.getGames()]
+        RV.getGames(),
+        LB.getGames()]
 
 
 def loopArray(arr):
