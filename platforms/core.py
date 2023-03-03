@@ -1,10 +1,12 @@
 import platforms.esportsbet as EB
 import platforms.cloudbet as CB
 import platforms.thunderpick as TP
+import platforms.luckbox as LB
 
 data = [CB.getGames(), 
         EB.getGames(), 
-        TP.getGames()]
+        TP.getGames(),
+        LB.getGames()]
 
 
 def loopArray(arr):
@@ -31,5 +33,5 @@ def runArb(i, j):
                         print(str(arb) + "%")
                         print("----------------------------------------------------------")
 
-def getArb():
+def getArb(stake):
     loopArray(data)
