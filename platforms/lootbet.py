@@ -31,18 +31,30 @@ def filterGames(data):
                 "odds": None
             }
         }
-        if len(item["top_market"]) > 0:
-            object["key"] = item["tournament"]["Name"]
-            object["team1"]["name"] = item["HomeTeamName"]
-            object["team2"]["name"] = item["AwayTeamName"]
-            for market in item["top_market"]:
-                for odd in market["odds"]:
-                    if odd["Name"] == object["team1"]["name"]:
-                        object["team1"]["odds"] = odd["Value"]
-                    else:
-                        object["team2"]["odds"] = odd["Value"]
-            data_array.append(object)
+        object["key"] = item["tournament"]["Name"]
+        object["team1"]["name"] = item["HomeTeamName"]
+        object["team2"]["name"] = item["AwayTeamName"]
+        odds = getOdds(item["Id"])
+        object["team1"]["odds"] = odds["odds1"]
+        object["team2"]["odds"] = odds["odds2"]
+        data_array.append(object)
 
 def getOdds(gameId):
     url = "https://loot.bet/odds/api/market?match=" + gameId + "&weight=negative"
     x = requests.get(url)
+    object = {
+        "odds1": None,
+        "odds2": None
+    }
+    data = json.loads(x.text)
+    try:
+        for item in data:
+            if item["MatchId"] == gameId:
+                if item["MarketTemplateId"] == 141:
+                    for odd in item["odds"]:
+                        object["odds1"] = odd[0]["Value"]
+                        object["odds2"] = odd[1]["Value"]
+        return object
+    except KeyError:
+        pass
+    
