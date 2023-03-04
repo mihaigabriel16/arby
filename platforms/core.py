@@ -14,10 +14,8 @@ from datetime import datetime
 data = [CB.getGames(), 
         EB.getGames(), 
         TP.getGames(),
-        LB.getGames(),
         RV.getGames(),
-        LB.getGames(),
-        TB.getGames()]
+        LB.getGames()]
 
 
 def loopArray(arr):
