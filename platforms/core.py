@@ -43,7 +43,7 @@ def runArb(i, j):
                         sap = calculateStakesAndProfit(oddsA, oddsB)
                         L = ["Team1: " + home + " " + str(oddsA) + " / " + i["platform"] + " / STAKE: $" + str(sap["stake_a"]) + "\n",
                              "Team2: " + away + " " + str(oddsB) + " / " + j["platform"] + " / STAKE: $" + str(sap["stake_b"]) + "\n",
-                             "Total Profit: " + str(sap["roi"]) + "% -> $" + str(int(sap["roi"]*configs.STAKE/100)) + "\n",
+                             "Total Profit: " + str(sap["roi"]) + "% -> $" + str(float(sap["roi"])*float(configs.STAKE)/100) + "\n",
                              str(formatDec(arb)) + "%"  + "\n",
                              "---------------------------------------------------------- \n"]
                         for line in L:
