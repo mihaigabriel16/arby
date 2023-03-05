@@ -5,13 +5,15 @@ import platforms.luckbox as LB
 import platforms.rivalry as RV
 import platforms.lootbet as LB
 import platforms.tonybet as TB
+import platforms.betibet as BB
 import configs
 import requests
 from pathlib import Path
 from datetime import datetime
 
 
-data = [CB.getGames(), 
+data = [BB.getGames(),
+        CB.getGames(), 
         EB.getGames(), 
         TP.getGames(),
         RV.getGames(),

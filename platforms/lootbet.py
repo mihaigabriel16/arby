@@ -53,10 +53,5 @@ def getOdds(gameId, teamA, teamB):
                 if len(item["odds"]) > 0:
                     object["odds1"] = item["odds"][0]["Value"]
                     object["odds2"] = item["odds"][1]["Value"]
-                    #for odd in item["odds"]:
-                    #    if odd["Name"] == teamA:
-                    #        object["odds1"] = odd["Value"]
-                    #    else:
-                    #        object["odds2"] = odd["Value"]
     return object
     
