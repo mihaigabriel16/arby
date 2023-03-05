@@ -40,7 +40,7 @@ def filterGames(data):
         object["team2"]["odds"] = odds["odds2"]
         data_array.append(object)
 
-def getOdds(gameId, teamA, teamB):
+def getOdds(gameId):
     url = "https://loot.bet/odds/api/market?match=" + gameId + "&weight=negative"
     x = requests.get(url)
     if x.status_code == 200:

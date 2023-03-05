@@ -2,9 +2,11 @@ name: Pinger Cron Job
 run-name: Calculate Arbitrage 🚀
 on: 
   schedule:
-    - cron: 0 0 * * *
-    - cron: 0 12 * * *
-    - cron: 0 18 * * *
+    - cron: 0 22 * * *
+    - cron: 0 10 * * *
+    - cron: 0 16 * * *
+    - cron: 0 19 * * *
+    - cron: 0 3 * * *
   push:
     braches:
       - main
