@@ -57,7 +57,6 @@ def formatOdd(value):
         size += 1
     if size >= 4:
         dec = [arr[size - 3], arr[size - 2], arr[size - 1]]
-        print(dec)
         del arr[size - 3]
         del arr[size - 2]
         del arr[-1]
