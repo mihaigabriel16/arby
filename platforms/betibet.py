@@ -56,19 +56,15 @@ def formatOdd(value):
         arr.append(value[char])
         size += 1
     if size >= 4:
-        print(arr)
-        print(size)
         dec = [arr[size - 3], arr[size - 2], arr[size - 1]]
         print(dec)
         del arr[size - 3]
         del arr[size - 2]
         del arr[-1]
-        print(arr)
         odd = ""
         for item in arr:
             odd = odd + item
         odd = odd + "."
         for item in dec:
             odd = odd + item
-        print(odd)
         return float(odd)
