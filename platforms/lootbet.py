@@ -35,7 +35,6 @@ def filterGames(data):
         object["team1"]["name"] = item["HomeTeamName"]
         object["team2"]["name"] = item["AwayTeamName"]
         odds = getOdds(item["Id"], object["team1"]["name"], object["team2"]["name"])
-        print(odds)
         object["team1"]["odds"] = odds["odds1"]
         object["team2"]["odds"] = odds["odds2"]
         data_array.append(object)
