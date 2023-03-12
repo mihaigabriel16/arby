@@ -1,15 +1,16 @@
 import platforms.esportsbet as EB
 import platforms.cloudbet as CB
 import platforms.thunderpick as TP
-import platforms.luckbox as LB
+import platforms.luckbox as LBX
 import platforms.rivalry as RV
-import platforms.lootbet as LB
+import platforms.lootbet as LBT
 import platforms.tonybet as TB
 import platforms.betibet as BB
 import configs
 import requests
 import base64
 import json
+import validators
 from pathlib import Path
 from datetime import datetime
 
@@ -20,7 +21,9 @@ data = [BB.getGames(),
         EB.getGames(), 
         TP.getGames(),
         RV.getGames(),
-        LB.getGames()]
+        LBX.getGames(),
+        LBT.getGames(),
+        TB.getGames()]
 
 
 def loopArray(arr):
@@ -88,12 +91,14 @@ def getArb():
 def sendDiscordNotif():
     list = getWebhooks()
     for item in list:
-        body = {
-            "embeds": [{
-                "description": formatText(configs.TXTARRAY)
-                }]
-            }
-        requests.post(item, json=body)
+        valid = validators.url(item)
+        if valid:
+            body = {
+                "embeds": [{
+                    "description": formatText(configs.TXTARRAY)
+                    }]
+                }
+            requests.post(item, json=body)
 
 def getWebhooks():
     url = "https://frjcaqhnfgsyzdwyvszc.functions.supabase.co/arby-webhooks"
@@ -104,6 +109,8 @@ def getWebhooks():
         list.append(item["url"])
     return list
 
+def verifyWebhook():
+    pass
 
 def formatText(data):
     text = ""

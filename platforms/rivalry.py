@@ -4,6 +4,7 @@ import requests
 data_array = []
 
 def getGames():
+    fetchGames()
     object = {
         "platform": "RIVALRY",
         "data": data_array
