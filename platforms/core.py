@@ -97,6 +97,9 @@ def decodeWebhook():
     url = base64.b64decode("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTA4MzgwMDg3MDMyNTYwMDM4OC9yWmNtUklld2s2RkRsYXNlU2UzdVA4QUp0Wld0MngtX3g5WUxBUjlpZkpTOGh0WGtPdl8ySkxiN0xEcEc2VGpicENFaA==").decode('utf-8')
     return url
 
+def getWebhooks():
+    pass
+
 
 def formatText(data):
     text = ""
