@@ -54,15 +54,16 @@ def filterGames(data):
 def getTeamNames(leagueId, gameId, engslug):
     url = "https://tonybet.com/en/api/seo/get-data?pageUrl=/en/prematch/league-of-legends/"+str(leagueId)+"/"+str(gameId)+"-"+engslug
     x = requests.get(url)
-    data = json.loads(x.text)
-    object = {
-        "key": None,
-        "team1": None,
-        "team2": None
-    }
-    item = data["data"]["structuredData"]
-    teams = item[4]
-    object["key"] = teams["organizer"]["name"]
-    object["team1"] = teams["homeTeam"]["name"]
-    object["team2"] = teams["awayTeam"]["name"]
-    return object
+    if x.status_code == 200:
+        data = json.loads(x.text)
+        object = {
+            "key": None,
+            "team1": None,
+            "team2": None
+        }
+        item = data["data"]["structuredData"]
+        teams = item[4]
+        object["key"] = teams["organizer"]["name"]
+        object["team1"] = teams["homeTeam"]["name"]
+        object["team2"] = teams["awayTeam"]["name"]
+        return object
