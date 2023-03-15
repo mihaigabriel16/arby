@@ -51,6 +51,7 @@ def getTeamNames(leagueId, gameId, engslug):
     x = requests.get(url)
     if x.status_code == 200:
         data = json.loads(x.text)
+        print(data)
         object = {
             "key": None,
             "team1": None,
