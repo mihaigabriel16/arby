@@ -17,11 +17,6 @@ def fetchGames():
     data = x.text  
     filterGames(data)
 
-def fetchTranslations(): # WE ARE NOT USING THIS ONE
-    url = "https://tonybet.com/api/translation/get?locale=en_GB"
-    x = requests.get(url)
-    data = x.text
-
 def filterGames(data):
     data = json.loads(data)
     for item in data["data"]["items"]:
