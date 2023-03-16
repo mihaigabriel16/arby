@@ -16,13 +16,14 @@ from datetime import datetime
 
 
 
-data = [BB.getGames(),
-        CB.getGames(), 
-        EB.getGames(), 
+data = [EB.getGames(),
+        CB.getGames(),
         TP.getGames(),
-        RV.getGames(),
         LBX.getGames(),
-        LBT.getGames()]
+        RV.getGames(),
+        LBT.getGames(),
+        BB.getGames()]
+
 
 
 def loopArray(arr):
@@ -78,8 +79,6 @@ def calculateStakesAndProfit(a, b):
         "roi": formatDec(roi)
     }
     return object
-
-
 
 def getArb():
     configs.TXTNAME = getDateTime()

@@ -1,3 +1,3 @@
-import platforms.core as core
+import core
 
 core.getArb()
