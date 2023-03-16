@@ -88,9 +88,7 @@ python main.py
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -99,9 +97,8 @@ python main.py
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+How is arbitrage calculated? (1 / ODDS_A + 1 / ODDS_B) * 100
+If the arbitrage equation is lower than 100%, profit is guaranteed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,14 +139,14 @@ This is an example of how to list things you need to use the software and how to
 ## Roadmap
 
 - [ ] Platforms
-    - [ ] Betibet
-    - [ ] Cloudbet
-    - [ ] Esportsbet
-    - [ ] Lootbet
-    - [ ] Luckbox
-    - [ ] Rivalry
-    - [ ] Thunderpick
-    - [ ] Tonybet 
+    - [x] Betibet
+    - [x] Cloudbet
+    - [x] Esportsbet
+    - [x] Lootbet
+    - [x] Luckbox
+    - [x] Rivalry
+    - [x] Thunderpick
+    - [x] Tonybet 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -161,18 +158,6 @@ Mihai Suciu - [@linkedin_handle](https://www.linkedin.com/in/mihai-suciu-6306851
 Project Link: [https://github.com/mihaigabriel16/arby](https://github.com/mihaigabriel16/arby)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
