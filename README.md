@@ -27,14 +27,6 @@
   <p align="center">
     ARBY is an Arbitrage Calculator for League of Legends esports competitions.
     It evaluates the odds from multiple operators and gives the best possible combinations for guaranteed profit.
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
 </div>
 
