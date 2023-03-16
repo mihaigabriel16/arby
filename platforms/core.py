@@ -22,8 +22,7 @@ data = [BB.getGames(),
         TP.getGames(),
         RV.getGames(),
         LBX.getGames(),
-        LBT.getGames(),
-        TB.getGames()]
+        LBT.getGames()]
 
 
 def loopArray(arr):
