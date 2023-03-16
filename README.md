@@ -1,20 +1,3 @@
-# ARBY
-
-ARBY is an Arbitrage Calculator for League of Legends esports competitions.
-It evaluates the odds from multiple operators and gives the best possible combinations for guaranteed profit.
-
-How is arbitrage calculated?
-(1 / ODDS_A + 1 / ODDS_B) * 100
-
-If the arbitrage equation is lower than 100%, profit is guaranteed.
-
-
-# RUN
-```
-pip install -r requirements.txt
-python main.py
-```
-
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
@@ -87,6 +70,7 @@ python main.py
 
 <p>How is arbitrage calculated? (1 / ODDS_A + 1 / ODDS_B) * 100</p>
 <p>If the arbitrage equation is lower than 100%, profit is guaranteed.</p>
+<p>You can change the STAKE and MINIMUM ARBITRAGE in the configs.py file.</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -116,7 +100,7 @@ python main.py
    ```
 2. Install requirements
    ```sh
-   pip install requirements.txt
+   pip install -r requirements.txt
    ```
 
 
