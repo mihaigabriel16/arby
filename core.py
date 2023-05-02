@@ -6,6 +6,7 @@ import platforms.rivalry as RV
 import platforms.lootbet as LBT
 import platforms.tonybet as TB
 import platforms.betibet as BB
+import platforms.ttbettop as BT
 import configs
 import requests
 import base64
@@ -22,7 +23,8 @@ data = [EB.getGames(),
         LBX.getGames(),
         RV.getGames(),
         LBT.getGames(),
-        BB.getGames()]
+        BB.getGames(),
+        BT.getGames()]
 
 
 
