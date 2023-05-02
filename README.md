@@ -110,6 +110,7 @@
     - [x] Rivalry
     - [x] Thunderpick
     - [ ] Tonybet 
+    - [x] 22BetTop
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

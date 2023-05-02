@@ -33,7 +33,7 @@ def sortGames(data):
             }
         }
 
-        if match["CHMING"] == "sub_e_sport_league_of_legends.png":
+        if match["CHIMG"] == "sub_e_sport_league_of_legends.png":
             object["key"] = match["LR"]
 
             object["team1"]["name"] = match["O1"]
