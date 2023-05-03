@@ -37,7 +37,7 @@ def sortGames(data):
             object["key"] = match["LR"]
 
             object["team1"]["name"] = match["O1"]
-            object["team1"]["odds"] = match[""]
+            object["team1"]["odds"] = match["E"][0]["C"]
             object["team2"]["name"] = match["O2"]
-            object["team2"]["odds"] = match[""]
+            object["team2"]["odds"] = match["E"][1]["C"]
             data_array.append(object)
