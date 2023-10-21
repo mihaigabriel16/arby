@@ -1,6 +1,4 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+platforms/__pycache__/
 *.py[cod]
-
-# Project Related
-runs
