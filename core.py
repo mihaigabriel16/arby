@@ -22,7 +22,7 @@ data = [EB.getGames(),
         TP.getGames(),
         LBX.getGames(),
         RV.getGames(),
-        LBT.getGames(),
+        #LBT.getGames(),
         BB.getGames(),
         BT.getGames()]
 
@@ -102,7 +102,7 @@ def sendDiscordNotif():
 
 def getWebhooks():
     url = "https://frjcaqhnfgsyzdwyvszc.functions.supabase.co/arby-webhooks"
-    x = requests.post(url)
+    x = requests.post(url) 
     list = []
     data = json.loads(base64.b64decode(x.text).decode('utf-8'))
     for item in data["data"]:
