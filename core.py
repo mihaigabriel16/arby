@@ -98,7 +98,7 @@ def sendDiscordNotif():
                 "description": formatText(configs.TXTARRAY)
                 }]
             }
-        requests.post(item, json=body)
+        requests.post(url, json=body)
 
 def formatText(data):
     text = ""
