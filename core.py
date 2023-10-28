@@ -89,28 +89,16 @@ def getArb():
     sendDiscordNotif()
 
 def sendDiscordNotif():
-    list = getWebhooks()
-    for item in list:
-        valid = validators.url(item)
-        if valid:
-            body = {
-                "embeds": [{
-                    "description": formatText(configs.TXTARRAY)
-                    }]
-                }
-            requests.post(item, json=body)
-
-def getWebhooks():
-    url = "https://frjcaqhnfgsyzdwyvszc.functions.supabase.co/arby-webhooks"
-    x = requests.post(url)
-    list = []
-    data = json.loads(base64.b64decode(x.text).decode('utf-8'))
-    for item in data["data"]:
-        list.append(item["url"])
-    return list
-
-def verifyWebhook():
-    pass
+    url = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTA4MzgwMDg3MDMyNTYwMDM4OC9yWmNtUklld2s2RkRsYXNlU2UzdVA4QUp0Wld0MngtX3g5WUxBUjlpZkpTOGh0WGtPdl8ySkxiN0xEcEc2VGpicENFaA=="
+    url = base64.b64decode(url).decode("utf-8")
+    valid = validators.url(url)
+    if valid:
+        body = {
+            "embeds": [{
+                "description": formatText(configs.TXTARRAY)
+                }]
+            }
+        requests.post(item, json=body)
 
 def formatText(data):
     text = ""
