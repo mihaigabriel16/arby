@@ -21,9 +21,9 @@ data = [EB.getGames(),
         CB.getGames(),
         TP.getGames(),
         #LBX.getGames(),
-        RV.getGames(),
+        RV.getGames()
         #LBT.getGames(),
-        BB.getGames(),
+        #BB.getGames(),
         #BT.getGames()
         ]
 
