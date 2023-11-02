@@ -97,6 +97,12 @@ def sendDiscordNotif():
         body = {
             "embeds": [{
                 "description": formatText(configs.TXTARRAY)
+            }]
+        }
+        if not configs.TXTARRAY:
+            body = {
+                "embeds": [{
+                "   description": "Run is empty."
                 }]
             }
         requests.post(url, json=body)
