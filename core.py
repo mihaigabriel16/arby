@@ -1,11 +1,11 @@
 import platforms.esportsbet as EB
 import platforms.cloudbet as CB
 import platforms.thunderpick as TP
-import platforms.luckbox as LBX
+import platforms.deprecated.luckbox as LBX
 import platforms.rivalry as RV
-import platforms.lootbet as LBT
-import platforms.tonybet as TB
-import platforms.betibet as BB
+import platforms.unavailable.lootbet as LBT
+import platforms.unavailable.tonybet as TB
+import platforms.unavailable.betibet as BB
 import platforms.ttbettop as BT
 import configs
 import requests
@@ -90,21 +90,18 @@ def getArb():
     sendDiscordNotif()
 
 def sendDiscordNotif():
+    print("Sending Notif")
     url = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTA4MzgwMDg3MDMyNTYwMDM4OC9yWmNtUklld2s2RkRsYXNlU2UzdVA4QUp0Wld0MngtX3g5WUxBUjlpZkpTOGh0WGtPdl8ySkxiN0xEcEc2VGpicENFaA=="
     url = base64.b64decode(url).decode("utf-8")
     valid = validators.url(url)
     if valid:
+        formattedText = formatText(configs.TXTARRAY)
         body = {
             "embeds": [{
-                "description": formatText(configs.TXTARRAY)
+                "description": formattedText
             }]
         }
-        if not configs.TXTARRAY:
-            body = {
-                "embeds": [{
-                "   description": "Run is empty."
-                }]
-            }
+        print(formattedText)
         requests.post(url, json=body)
 
 def formatText(data):
